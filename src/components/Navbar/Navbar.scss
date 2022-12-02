@@ -1,0 +1,131 @@
+ @mixin flex($justify, $align_item) {
+     display: flex;
+     justify-content: $justify;
+     align-items: $align_item;
+ }
+
+ @mixin list() {
+     ul {
+         list-style: none;
+
+         li {
+             margin: 0;
+             padding: 0;
+         }
+     }
+ }
+
+ .app__navber {
+     position: fixed;
+     @include flex(space-between, center);
+     width: 100%;
+     border: 2px solid black;
+     background-color: var(--color-black);
+     padding: 1rem 2rem;
+     z-index: 99;
+
+     .app__navber-logo {
+         @include flex(flex-start, center);
+
+         img {
+             width: 150px;
+         }
+     }
+
+     .app__navbar-links {
+         @include flex(center, center);
+         flex: 1;
+
+         li {
+             margin: 0 1rem;
+             cursor: pointer;
+
+             &:hover {
+                 color: var(--color-grey)
+             }
+         }
+     }
+
+     @include list();
+
+     .app__navbar-login {
+         @include flex(flex-end, center);
+
+         a {
+             margin: 0 1rem;
+             transition: all 0.5s ease;
+             text-decoration: none;
+
+             &:hover {
+                 border-bottom: 1px solid var(--color-golden);
+             }
+         }
+
+         div {
+             width: 1px;
+             height: 30px;
+             background-color: var(--color-golden);
+         }
+
+     }
+
+     .app__navbar-smallscreen {
+         display: none;
+
+         li {
+             margin: 2rem;
+             color: var(--color-golden);
+             font-size: 2rem;
+             text-align: center;
+             font-family: var(--font-base);
+             font-weight: 900;
+
+             &:hover {
+                 color: white;
+             }
+         }
+
+         .app__navbar-smallscreen_overlay {
+             position: fixed;
+             top: 0;
+             left: 0;
+             width: 100%;
+             height: 100vh;
+             background-color: var(--color-black);
+             transition: 0.5s ease;
+             flex-direction: column;
+             z-index: 5;
+
+             .overlay__close {
+                 font-size: 27px;
+                 color: var(--color-golden);
+
+                 position: absolute;
+                 top: 20px;
+                 right: 20px;
+             }
+         }
+     }
+ }
+
+ @media (max-width:1200px) {
+     .app__navbar-links {
+         display: none !important;
+     }
+
+     .app__navbar-smallscreen {
+         display: flex !important;
+     }
+ }
+
+ @media screen and (max-width: 767px) {
+     .app__navber-logo {
+         img {
+             width: 110px !important;
+         }
+     }
+
+     .app__navbar-login {
+         display: none !important;
+     }
+ }
