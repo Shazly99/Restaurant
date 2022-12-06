@@ -3,18 +3,25 @@ import './Intro.scss';
 import { meal } from '../../constants'
 
 
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRef } from 'react';
 
 function Intro() {
-  const [playVideo, setPlayVideo] = useState('');
+  const [playVideo, setPlayVideo] = useState(false);
   const vidRef = useRef();
 
   const handelVideo = () => {
     setPlayVideo((prevPlayVideo) => !prevPlayVideo);
-    setPlayVideo(true);
-    setPlayVideo(false)
+
+    if (playVideo) {
+      vidRef.current.pause();
+    } else {
+      vidRef.current.play();
+    }
   }
+  useEffect(() => {
+    console.log(vidRef.current.value);
+  }, [])
 
   return (
     <>
@@ -23,14 +30,22 @@ function Intro() {
           src={meal}
           type='video/mp4'
           loop
-          width={450}
+          controls={false}
+          ref={vidRef}
+          className="video"
         />
 
         <div className="app__video-overlay flex__center ">
           <div
             onClick={handelVideo}
             className="app__video-overlay_circle flex__center " >
-
+            {
+              playVideo ? (
+                <BsPauseFill color='#fff' fontSize={30} />
+              ) : (
+                <BsFillPlayFill color='#fff' fontSize={30} />
+              )
+            }
           </div>
         </div>
       </div>
