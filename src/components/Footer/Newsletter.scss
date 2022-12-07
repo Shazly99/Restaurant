@@ -1,0 +1,26 @@
+.app__newsletter{
+    padding: 2rem 4rem;
+    border: 1px solid var(--color-golden);
+    background: var(--color-black);
+    .app__newsletter-heading{
+        text-align: center;
+    }
+
+    .app__newsletter-input{
+        flex-direction: row;
+        margin-top: 3rem;
+        input{
+            width: 620px;
+            border: 1px solid var(--color-golden) !important;
+            border-radius: 5px;
+            font: {
+                size: 1rem;
+                family:var(--font-base);
+            }
+            color: white;
+            margin-right: 0.75rem;
+            padding: 0.75rem 1rem;
+            background-color: var(--color-black);
+        }
+    }
+}
