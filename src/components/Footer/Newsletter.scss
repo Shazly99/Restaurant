@@ -7,6 +7,7 @@
     }
 
     .app__newsletter-input{
+        display: flex;
         flex-direction: row;
         margin-top: 3rem;
         input{
@@ -21,6 +22,41 @@
             margin-right: 0.75rem;
             padding: 0.75rem 1rem;
             background-color: var(--color-black);
+        }
+        button{
+            width: max-content;
+        }
+    }
+}
+
+@media screen and (min-width:2000px) {
+    
+}
+
+@media screen and (max-width:990px) {
+    .app__newsletter-input{
+        flex-direction: column !important;
+        width: 90%;
+        margin: auto;
+        input{
+            margin: 0 0 2rem 0 ;
+            width: 100% ;
+        }
+    }
+}
+
+@media screen and (max-width:650px) {
+    .app__newsletter{
+        padding: 2rem 0px;
+        border: none;
+    }
+}
+
+@media screen and (max-width:300px) {
+    .app__newsletter-heading {
+        h1{
+            font-size: 32px;
+            line-height: 50px;
         }
     }
 }
